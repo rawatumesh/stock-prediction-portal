@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { faL, faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 const Register = () => {
   const [email, setEmail] = useState('')
@@ -22,6 +22,7 @@ const Register = () => {
 
     try{
       const response = await axios.post('http://127.0.0.1:8000/api/v1/register/', userData)
+      console.log('Registration successful')
       setErrors({})
       setSuccess(true)
       setEmail('')
@@ -60,7 +61,7 @@ const Register = () => {
             <input type='password' placeholder='Enter password' value={password} onChange={(e)=>{setPassword(e.target.value)}} className='focus:outline-none focus:ring-3 focus:ring-blue-500  bg-white text-gray-950 px-4 py-2 rounded w-full'/>
             <small>{errors.password && <div className='text-red-500 text-sm font-semibold'>{errors.password}</div>}</small>
           </div>
-          {loading ? (<button disabled className='mt-5 bg-blue-500 text-center w-fit px-5 py-2 rounded text-black/90 font-semibold text-lg'><FontAwesomeIcon icon={faSpinner} spin/>Please Wait..</button>) : (<button type='submit' className='mt-5 bg-blue-500 text-center w-fit px-5 py-2 rounded active:scale-90 text-black/90 font-semibold'>Register</button>)}
+          {loading ? (<button disabled className='mt-2 bg-blue-500 text-center w-fit px-5 py-2 rounded text-black/90 font-semibold text-lg'><FontAwesomeIcon icon={faSpinner} spin/>&emsp;Please Wait..</button>) : (<button type='submit' className='mt-2 bg-blue-500 text-center w-fit px-5 py-2 rounded active:scale-90 text-black/90 font-semibold'>Register</button>)}
         </form>
       </div>
       </section>
