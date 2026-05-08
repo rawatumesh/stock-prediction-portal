@@ -7,6 +7,9 @@ import Footer from './components/Footer'
 import Register from './components/Register'
 import Login from './components/Login'
 import AuthProvider from './AuthProvider'
+import Dashboard from './components/dashboard/Dashboard'
+import Private from './Private'
+import Public from './Public'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,8 +21,9 @@ function App() {
           <Header />
           <Routes>
             <Route path='/' element={<Main />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Public><Register /></Public>} />
+            <Route path='/login' element={<Public><Login /></Public>} />
+            <Route path='/dashboard' element={<Private><Dashboard /></Private>} />
           </Routes>
           <Footer />
         </BrowserRouter>
